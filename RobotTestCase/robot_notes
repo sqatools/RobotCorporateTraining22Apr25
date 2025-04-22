@@ -36,3 +36,7 @@ Advance xpath:
 6). ancestor
 
 
+
+
+# command to execute the test cases with end condition of tags.
+robot -d report  -i "loopANDsmoke" .\RobotTestCase\goibibo_testcases.robot

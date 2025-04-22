@@ -5,7 +5,8 @@ Resource   keyword_resource_file.robot
 Resource   variables_file.robot
 
 
-Suite Setup        Open Browser     ${goibibo_url}     ${browser}
+Suite Setup        Open Browser  ${goibibo_url}  ${browser}
+                   #Maximize Browser Window
 Suite Teardown     Close Browser
 
 
@@ -17,7 +18,10 @@ ${destination_city}      New Delhi, India
 
 
 *** Test Cases ***
+
+
 Select Source City and Destination City
+    [Tags]   smoke
     [Documentation]   Select Source City and Destination City
     Close Initial Popup
     Select Source City     ${source_city} 
@@ -25,10 +29,27 @@ Select Source City and Destination City
     Sleep     5s
 
 Select Departure Date and Verify
+    [Tags]   sanity
     [Documentation]     Select Departure Date and Verify
     Select Departure Date       ${departure_date}
 
 
+Show For Loop Output
+    [Tags]   loop  smoke
+    [Documentation]   Show For Loop Output
+    FOR    ${counter}    IN RANGE    0    10    2
+        Log To Console   ${counter}
+
+    END
+
+
+Select Passenger Details and Search Flight
+    [Tags]   smoke   sanity
+    [Documentation]     Select Passenger Details and Search Flight
+    Enter Passenger Details      ${Adults}    ${childs}    ${infants}
+    Select Travel Class     ${travel_class}
+    Click to Search Button
+    sleep      5s
 
 *** Keywords ***
 
