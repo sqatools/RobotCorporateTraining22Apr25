@@ -1,0 +1,38 @@
+# command to execute the robot file
+
+ -> robot -d report .\RobotTestCase\first_robot_file.robot
+
+ -d : report directory
+
+# command to execute specific test cases with tags.
+
+  -> robot -d report -i singup  .\RobotTestCase\first_robot_file.robot
+  -i :  include tags.
+
+
+xpath methods:
+
+1). Basic xpath = //tagname[attrib='value']
+2). Text Method = //tagname[text()='text value']
+3). contains method  = //tagname[contains(text(), 'value')]
+                       //tagname[contains(@attribute, 'value')]
+
+
+
+Advance xpath:
+
+1). following :  All the elements on web in downside of ref element.
+                 //ref[@attr='value']//following::tar[@attr='value']
+                 //p[text()='Enter city or airport']//following::label[@for='ST']
+
+2). following-sibling :
+
+3). preceding :  All the elements on web in upper side of ref element.
+                 //ref[@attr='value']//preceding::tar[@attr='value']
+                 //p[text()='Enter city or airport']//preceding::p[text()='One-way']
+
+4). preceding-sibling
+5). parent
+6). ancestor
+
+
