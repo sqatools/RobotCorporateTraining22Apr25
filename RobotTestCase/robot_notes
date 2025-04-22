@@ -40,3 +40,11 @@ Advance xpath:
 
 # command to execute the test cases with end condition of tags.
 robot -d report  -i "loopANDsmoke" .\RobotTestCase\goibibo_testcases.robot
+
+# command to execute the automation with command line options to read variable file
+ robot -d report -V .\RobotTestCase\python_variable.py -v GREETING:"Good Evening" .\RobotTestCase\variables_scope_and_values.robot
+
+Notes :  If we define same variable in suite file, variable file and command line option
+         then commandline will get higher priority , then variable file, then suite level variable.
+
+
