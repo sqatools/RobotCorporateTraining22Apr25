@@ -145,3 +145,5 @@ Program with Nested If Condition
     END
 
 
+# write a robot program to get all even values from given list
+# @{numbers}      5  8  9  2  6  8  12
