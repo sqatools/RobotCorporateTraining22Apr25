@@ -15,7 +15,9 @@ ${Dest_city_dropdn}       //span[text()='${Dest_City_Name}']//parent::li
 ${date_calender_loc}      //input[@placeholder="Pick a date"]
 ${date_loc}               //span[text()='${travel_date}']//parent::li
 ${search_btn_loc}         //button[text()='Search Bus']
-
+${selct_seat_loc}         (//p[text()='Zingbus Plus']//ancestor::div[contains(@class, 'ActivepcardInnerLayoutDiv')]//span[text()='SELECT SEAT']//ancestor::button)[1]
+${boarding_point_loc}     //p[text()='Boarding Point']//parent::div//p[text()='Borivali East']//ancestor::label/label
+${dropping_point_loc}     //p[text()='Dropping Point']//parent::div//p[text()='Vishal Nagar']//ancestor::label/label
 ######## Test Data ################
 ${goibob_bus_url}        https://www.goibibo.com/bus/
 ${Browser}               Chrome
@@ -27,12 +29,12 @@ ${travel_date}           30
 *** Test Cases ***
 Automate Bus Booking Feature and Verify
         [Documentation]   Automate Bus Booking Feature and Verify
-        Start Video Recording     alias=None  name=DemoRecoding  fps=None    size_percentage=1    embed=True    embed_width=100px  monitor=2
+        # Start Video Recording     alias=None  name=DemoRecoding  fps=None    size_percentage=1    embed=True    embed_width=100px  monitor=2
         Enter source and dest city       ${source_city_name}        ${dest_city_name}
         Select travel date
         click on search button
         Sleep      10s
-        Stop Video Recording
+        # Stop Video Recording
 
 
 
@@ -57,3 +59,6 @@ Select travel date
      
 click on search button
      Click Element        ${search_btn_loc}
+
+Select Passenger Seat
+    Click Element      ${selct_seat_loc}
