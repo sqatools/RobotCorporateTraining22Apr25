@@ -147,3 +147,117 @@ Program with Nested If Condition
 
 # write a robot program to get all even values from given list
 # @{numbers}      5  8  9  2  6  8  12
+
+# write a robot program to find prime number from 1 to 50
+
+
+Program with If ELSE IF Condition
+      ${marks}=   Set Variable   79
+      IF    ${marks} < 50
+          Log To Console    Failed in examination
+      ELSE IF  ${marks} < 60
+          Log To Console    Passed with B grade
+
+      ELSE IF  ${marks} < 80
+          Log To Console    Passed with A grade
+
+      ELSE IF  ${marks} <= 100
+          Log To Console    Passed with A++ grade
+      END
+
+
+
+Program with while loop
+      ${var} =   Set Variable   1
+      WHILE    ${var} < 10  # 1 < 10 | 2 < 10 | 3 < 10...  10 < 10
+          Log To Console      ${var}
+          ${var}=   Evaluate    ${var} + 1
+      END
+
+
+
+# write program to calculate sum of all value from 1 to 50
+# check the given is prime or not
+# reverse of the given number
+
+
+write a program to get sum and other operation
+   ${sum}=  Set Variable   0
+   FOR    ${i}    IN RANGE    1    50    1
+       ${sum}=   Evaluate    ${sum} + ${i} 
+   END
+   
+   Log To Console    Sum of value: ${sum}
+   
+   ###########  reverse of output ###########
+   # 1225
+   ${num}=    Set Variable   ${sum}
+   ${reverse}=  Set Variable   0
+   WHILE    ${num} > 0
+        ${temp} =  Evaluate    ${num}%10
+        Log To Console   temp:${temp}
+        ${reverse}=  Evaluate   ${reverse}*10 + ${temp}
+        Log To Console    reverse:${reverse}
+        ${num}=  Evaluate   ${num}//10
+        Log To Console    num:${num}
+        Log To Console    ___________________________
+   END
+   
+   Log To Console    Reverse output: ${reverse} 
+
+
+
+Write Program to Check Given Number is Prime Or Not
+     ${num}=  Set Variable    10
+     ${count}=  Set Variable  0
+     FOR    ${val}    IN RANGE    2    ${num}    1 # 2
+         Log To Console    ${val}
+         ${temp}=   Evaluate    ${num}%${val}  # 10%2 == 0
+         IF    ${temp} == 0
+             ${count}=   Evaluate    ${count} + 1
+             BREAK
+         ELSE
+            CONTINUE
+
+         END
+
+     END
+
+     IF    ${count} == 0
+          Log To Console    This is prime number: ${num}
+     ELSE
+          Log To Console    This is not prime number: ${num}
+     END
+   
+
+
+Get List of all Prime Number From 1 to 100
+    FOR    ${num}    IN RANGE    1    100    1
+        Log    ${num}
+        ${count}=  Set Variable   0
+        FOR    ${val}    IN RANGE    2    ${num}    1
+            Log    ${val}
+            ${temp}=   Evaluate    ${num}%${val}
+            IF    ${temp} == 0
+                  ${count}=   Evaluate    ${count} + 1
+                  BREAK
+            ELSE
+                 CONTINUE
+            END
+
+        END
+
+        IF    ${count} == 0
+             Log To Console    ${num}
+        END
+
+    END
+
+
+#Q1 write a program to calculate the factorial any given number.
+# 5 = 5*4*3*2*1
+
+#Q2 write a program to get sum of all digits in given value.
+# input = 123
+# output = 6
+
