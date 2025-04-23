@@ -10,31 +10,6 @@
   -i :  include tags.
 
 
-xpath methods:
-
-1). Basic xpath = //tagname[attrib='value']
-2). Text Method = //tagname[text()='text value']
-3). contains method  = //tagname[contains(text(), 'value')]
-                       //tagname[contains(@attribute, 'value')]
-
-
-
-Advance xpath:
-
-1). following :  All the elements on web in downside of ref element.
-                 //ref[@attr='value']//following::tar[@attr='value']
-                 //p[text()='Enter city or airport']//following::label[@for='ST']
-
-2). following-sibling :
-
-3). preceding :  All the elements on web in upper side of ref element.
-                 //ref[@attr='value']//preceding::tar[@attr='value']
-                 //p[text()='Enter city or airport']//preceding::p[text()='One-way']
-
-4). preceding-sibling
-5). parent
-6). ancestor
-
 
 
 
@@ -46,5 +21,94 @@ robot -d report  -i "loopANDsmoke" .\RobotTestCase\goibibo_testcases.robot
 
 Notes :  If we define same variable in suite file, variable file and command line option
          then commandline will get higher priority , then variable file, then suite level variable.
+
+
+################################## XPATH #############################
+
+Absolute XPath: Absolute xpath follows entire path of HTML DOM to identify the element
+                e.g.  /html/body/div/div[1]/div/header/ul/li[2]/a
+
+Relative XPath: relative xpath starts with // and target one specific element with the unique
+                attribute:
+               e.g  //tagname[@attribute='value']
+                    //input[@data-testid="royal-email"]
+
+                    # xpath without target tagname
+                    //*[@data-testid="royal-email"]
+                    //*[@name="email"]
+                    //*[@id="email"]
+
+
+
+Basic xpath methods:
+
+1). Basic xpath = //tagname[attrib='value']
+2). Text Method = //tagname[text()='text value']
+                  //button[text()='Log in']
+                  //a[text()='Create new account']
+                  //a/*[text()='Hotels']
+
+3). contains method : with the help contains method we can identify the element with partial
+                      attribute value or partial text value.
+
+                       # search element with partial text value
+                         -> //tagname[contains(text(), 'value')]
+                         -> //*[contains(text(),' and International Flights')]
+                         -> //span[contains(text(),'SEARCH')]
+
+                       # Indexing on xpath if multiple elements are matching.
+                        ->  (//*[contains(text(),'International Flight')])[1]
+                        -> (//a[@href="/hotels/"])[1]
+
+                        # search element with partial of attributes
+                          -> //tagname[contains(@attribute, 'value')]
+                          -> //input[contains(@data-testid,"email")]
+                          -> //a[contains(@data-testid,"open-registration")]
+
+
+4). And OR condition :   AND OR condition allow us to identify the element with multiple attribute
+                         values.
+                         # AND Condition :  Both the attribute should be available
+                         e.g.   //tagname[@attr1='value' and @attr2='value']
+                                -> //a[@href="/hotels/" and @target='_self']
+                                -> //input[@id='email' and @name='email']
+                                -> //input[contains(@data-testid, "royal") and @name='email']
+                                -> //input[contains(@aria-label, "Email") and @name='email']
+                                ->
+                         # OR Condition :  Any of the attribute is available, then it will locate element
+
+                          e.g. //tagname[@attr1='value' or @attr2='value']
+                                -> //input[contains(@aria-label, "Email") or @name='pass']
+                                ->  //a[@href="/cars/" or @target='__self']
+
+
+
+
+Advance xpath:
+
+
+1). parent : Parent element are those which contain one or multiple child element.
+               e.g.    -> //child_tagname[@ref='value']//parent:parent_tag[@ref='value']
+                       -> //div[text()='Student']//parent::div//parent::div//parent::label
+                       -> //p[text()='International Hotels']//parent::a//parent::li
+
+2). ancestor : Ancestor method helps to identify any of grand parent element with refer of child element.
+                      -> //div[text()='Student']//ancestor::label
+                      -> //div[text()='Student']//ancestor::label/div
+                      -> //p[text()='One-way']//ancestor::ul//p[text()='Multi-city']
+
+
+3). following :  All the elements on web in downside of ref element.
+                 //ref[@attr='value']//following::tar[@attr='value']
+                 //p[text()='Enter city or airport']//following::label[@for='ST']
+
+4). following-sibling :
+
+5). preceding :  All the elements on web in upper side of ref element.
+                 //ref[@attr='value']//preceding::tar[@attr='value']
+                 //p[text()='Enter city or airport']//preceding::p[text()='One-way']
+
+6). preceding-sibling
+
 
 
