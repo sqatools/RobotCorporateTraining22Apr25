@@ -254,10 +254,27 @@ Get List of all Prime Number From 1 to 100
     END
 
 
-#Q1 write a program to calculate the factorial any given number.
+#Q1 write a program to calculate the factorial of any given number.
 # 5 = 5*4*3*2*1
+# fact =1
+# for i in range(1, 6, 1)
+#    fact = fact*i
+#print(fact)
 
 #Q2 write a program to get sum of all digits in given value.
 # input = 123
 # output = 6
+
+Sum Of All digits from given value
+    ${num} =   Set Variable   456
+    ${result}=  Set Variable   0
+    WHILE    ${num} > 0 # 45 > 0, 4 > 0 , 0> 0
+        ${temp} =  Evaluate    ${num}%10 # 6, 5, 4
+        ${result}=   Evaluate    ${result} + ${temp}  # 6, 11, 15
+        ${num} =  Evaluate    ${num}//10 # 45, 4, 0
+    END
+    Log To Console   Sum Of All digits : ${result}
+
+
+
 
